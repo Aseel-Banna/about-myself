@@ -165,23 +165,32 @@ if (parseInt(answerNumber) == 7) {
 
    // Seventh Question about my name's letter
    var myArray = ['A', 'S', 'E', 'E', 'L'];
+   var index = myArray.length;
+   var correct = false;
 
-   var guess = prompt('Inserts one of my name"s letters');
+   var guess = prompt('Inserts one of my name\'s letters');
 
    for (var c = 0; c < 5; c++) {
       while (guess === null || guess === undefined || guess === '') {
          alert('Please answer!');
          guess = prompt('Inserts the number that you guess it is my lucky one!');
       }
-      if (guess.toLowerCase() === 'a' || guess.toLowerCase() === 's' || guess.toLowerCase() === 'e' || guess.toLowerCase() === 'l') {
-         alert('That is correct! :)');
-         grade = grade + 1;
-         break;
-      } else {
-         alert('That is wrong! :(');
-         guess = prompt('Inserts one of my name"s letters');
+      
+      for (var j=0 ; j < index ; j++){
+         if (guess.toLowerCase() === myArray[j].toLowerCase()) {
+            alert('That is correct! :)');
+            grade = grade + 1;
+            correct= true;
+            console.log('guess=' , guess, myArray[j], correct);
+            break;
+         }
       }
+      if (correct){
+         break;
+   } alert('That is wrong! :(');
+     guess = prompt('Inserts one of my name\'s letters');
    }
+
 
 alert('My name consist of these letters: ' + myArray);
 alert('Your grade is ' + grade + ' out of 7');

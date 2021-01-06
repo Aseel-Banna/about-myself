@@ -9,10 +9,48 @@ var y = 'yes';
 var n = 'no';
 var grade = 0;
 
-// First Question is about my favorite color
-var answerColor = prompt('Do you think that my favorite color is blue?');
+var myArray = ['A', 'S', 'E', 'E', 'L'];
+   var index = myArray.length;
+   var correct = false;
 
-while (answerColor === null || answerColor === undefined || answerColor === '') {
+var answerColor = answer('Do you think that my favorite color is blue?');
+var answerDrink= answer('Do you think that my favorite drink is Hot Chocolate?');
+var answerFood= answer('Do you think that my favorite food is Mlokhiah?');
+var answerFruit= answer('Do you think that my favorite fruit is Strawberry?');
+var answerHoppy= answer('Do you think that my favorite hoppy is drawing?');
+var answerNumber= guessNumber();
+var answerLetter= guessLetter();
+
+// Declartion Functions
+
+function answer(userAnswer){
+   var userAnswer=prompt(userAnswer);
+   while (userAnswer === null || userAnswer === undefined || userAnswer === '') {
+      //alert('Please answer!');
+      userAnswer=prompt('Please answer!');
+   }
+   while (userAnswer.toLowerCase() !== yes && userAnswer.toLowerCase() !== y && userAnswer.toLowerCase() !== no && userAnswer.toLowerCase() !== n) {
+      alert('Please insert a valid answer');
+      userAnswer=prompt(userAnswer);
+   }
+   if (userAnswer.toLowerCase() === yes || userAnswer.toLowerCase() === y) {
+      // console.log(answerColor);
+      alert('Yup :) ! That is right.');
+      grade = grade + 1;
+   }
+   else {
+      alert('No :( ! That is wrong.');
+   }
+
+
+}
+
+
+
+// First Question is about my favorite color
+//var answerColor = prompt('Do you think that my favorite color is blue?');
+
+/*while (answerColor === null || answerColor === undefined || answerColor === '') {
    alert('Please answer!');
    answerColor = prompt('Do you think that my favorite color is blue?');
 }
@@ -31,11 +69,11 @@ if (answerColor.toLowerCase() === yes || answerColor.toLowerCase() === y) {
 }
 else {
    alert('No :( ! That is wrong.');
-}
+}*/
 
 
 // Second Question about my favorite food
-var answerFood = prompt('Do you think that my favorite food is Molokhiah?');
+/*var answerFood = prompt('Do you think that my favorite food is Molokhiah?');
 
 while (answerFood === null || answerFood === undefined || answerFood === '') {
    alert('Please answer!');
@@ -161,14 +199,12 @@ if (parseInt(answerNumber) == 7) {
       }
    }
 }
-   alert('My lucky number is 7!');
+   alert('My lucky number is 7!');*/
 
    // Seventh Question about my name's letter
-   var myArray = ['A', 'S', 'E', 'E', 'L'];
-   var index = myArray.length;
-   var correct = false;
+   
 
-   var guess = prompt('Inserts one of my name\'s letters');
+   /*var guess = prompt('Inserts one of my name\'s letters');
 
    for (var c = 0; c < 5; c++) {
       while (guess === null || guess === undefined || guess === '') {
@@ -193,5 +229,90 @@ if (parseInt(answerNumber) == 7) {
 
 
 alert('My name consist of these letters: ' + myArray);
+alert('Your grade is ' + grade + ' out of 7');*/
+
+function guessNumber(number) {
+   var number = prompt('Inserts the number that you guess it is my lucky one!');
+
+   if (parseInt(number) == 7) {
+      alert('That is correct! My lucky number is 7 :) .');
+      grade = grade + 1;
+   } else {
+   
+      for (var i = 0; i < 3; i++) {
+         while (number === null || number === undefined || number === '') {
+            alert('Please answer!');
+            number = prompt('Inserts the number that you guess it is my lucky one!');
+         }
+   
+         if (parseInt(number) < 7) {
+            //console.log(answerNumber);
+            alert('Too Low');
+            number = prompt('Inserts the number that you guess it is my lucky one!');
+         }
+         else if (parseInt(number) > 7) {
+            alert('Too High');
+            number = prompt('Inserts the number that you guess it is my lucky one!');
+         }
+         else if (parseInt(number) == 7) {
+            alert('That is correct! :) ');
+            break;
+         }
+
+      }
+      alert('My Lucky number is 7 :) !');
+   }
+
+
+}
+
+function guessLetter(letter){
+
+var letter = prompt('Inserts one of my name\'s letters');
+
+   for (var c = 0; c < 5; c++) {
+      while (letter === null || letter === undefined || letter === '') {
+         alert('Please answer!');
+         letter = prompt('Inserts one of my name\'s letters');
+      }
+      
+      for (var j=0 ; j < index ; j++){
+         if (letter.toLowerCase() === myArray[j].toLowerCase()) {
+            alert('That is correct! :)');
+            grade = grade + 1;
+            correct= true;
+           // console.log('guess=' , guess, myArray[j], correct);
+            break;
+         }
+      }
+      if (correct){
+         break;
+   } alert('That is wrong! :(');
+     letter = prompt('Inserts one of my name\'s letters');
+   }
+}
+
+
+alert('My name consist of these letters: ' + myArray);
 alert('Your grade is ' + grade + ' out of 7');
 
+
+  /* var counter = 1;
+   if (counter === 5) {
+       alert('Sorry you run out of guesses');
+   }
+   while (counter < 5 && number !==24) {
+       var number = parseInt(prompt('Guess my Age'));
+       if (number > 24) {
+           alert(' too high! Guess again');
+           counter++;
+       } else if (number < 24) {
+           alert('too low! Guess again');
+           counter++;
+       }
+   }
+   if (number === 24) {
+       alert('That is correct! My Age is 24!');
+       score++;
+       counter = 5;
+   }-*/
